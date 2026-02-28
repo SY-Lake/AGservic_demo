@@ -50,11 +50,7 @@ def display_graph(st,df, customer, sample, item):
     # X軸のフォーマット調整（日付を見やすくする）
     fig.update_xaxes(dtick="M1", tickformat="%Y/%m/%d")
     fig.update_layout(hovermode="x unified")
-    fig.update_layout(
-        dragmode=False,
-        xaxis=dict(fixedrange=True),
-        yaxis=dict(fixedrange=True)
-    )
+    fig.update_layout(dragmode=False,xaxis=dict(fixedrange=True),yaxis=dict(fixedrange=True))
 
     
     #st.plotly_chart(fig, use_container_width=True)
@@ -64,3 +60,4 @@ def display_graph(st,df, customer, sample, item):
     if plot_df['結果_数値'].isna().any():
 
         st.caption("※ 数値変換できないデータ、または日付不明なデータを除外して表示しています。")
+
