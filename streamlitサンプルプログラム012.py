@@ -66,7 +66,7 @@ def main_app():
         st.session_state['user_info'] = None
         st.rerun()
 
-    st.title("📊 計量データ一覧")
+    st.header("📊 計量データ一覧")
 
     try:
         # 1. CSV読み込み
@@ -179,4 +179,5 @@ def main_app():
 if st.session_state['logged_in']:
     main_app()
 else:
+
     login()
