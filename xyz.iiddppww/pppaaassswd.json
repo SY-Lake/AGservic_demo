@@ -1,14 +1,14 @@
 {
     "users": [
         {
-            "id":'syun',
-            "pw":'0319',
+            "id":"syun",
+            "pw":"0319",
             "name": "agサービスデモ用アカウント",
             "customer_names": ["XXX産業株式会社","XXX加工産業株式会社"]
         }
     ]
-
 }
+
 
 
 
