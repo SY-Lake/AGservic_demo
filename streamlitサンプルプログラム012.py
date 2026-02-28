@@ -7,15 +7,24 @@ import x005_graph_make as x005
 import x006_df_data_cleansing as x006
 import x007_pdf_find_and_download as x007
 
-# JSONファイルのパス
-USER_DB_PATH = r'xyz.iiddppww\pppaaassswd.json'
+# 実行ファイル(app.pyなど)と同じ場所を基準にする
+BASE_DIR = os.path.dirname(__file__)
+# Linux/Windows両対応のパス指定
+USER_DB_PATH = os.path.join(BASE_DIR, 'xyz.iiddppww', 'pppaaassswd.json')
 
-# --- 認証・認可ロジック ---
 def load_user_db():
-    if os.path.exists(USER_DB_PATH):
+    # デバッグ用：ファイルが存在するかログに出力（Streamlit CloudのManage appで確認可能）
+    if not os.path.exists(USER_DB_PATH):
+        # st.error(f"File not found: {USER_DB_PATH}") # 動作確認時にコメントアウト解除
+        return {"users": []}
+
+    try:
         with open(USER_DB_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
-    return {"users": []}
+    except Exception as e:
+        st.error(f"Error loading JSON: {e}")
+        return {"users": []}
+
 
 def authenticate(user_id, password):
     db = load_user_db()
